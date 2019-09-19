@@ -75,7 +75,7 @@ movie앱을 열고, npm스타트, 수정하면 알아서 컴파일 해준다.<br
 
 -App.js
 ```javascript
-ClassName="App"이하 모든 내용 삭제
+모든 내용 삭제
 ```
 -App.css
 ```css
