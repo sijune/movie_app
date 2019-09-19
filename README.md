@@ -120,40 +120,48 @@ export default Movie //app.js로 해당 컴포넌트를 내보낸다.
 
 -App.js
 ```javascript
-import React from 'react';
+import React, {Component} from 'react';
+import React, {Component} from 'react';
+import logo from './logo.svg';
 import './App.css';
 import Movie from './Movie.js';
 
-function App() {
-  return (
-    <div className="App">
-      <Movie />
-    </div>
-  );
+class App extends Component{ // Component -> render -> return(JSX)
+  render(){  
+    return( 
+      <div className="App">
+        <Movie /> {/* call Movie Component */}
+        <h1>this is app.js</h1>
+      </div>
+    )
+  }
 }
+export default App; 
 
-export default App;
+
 ```
 
 -App.js
 ```javascript
-import React from 'react';
+import React, {Component} from 'react';
+import logo from './logo.svg';
 import './App.css';
 import Movie from './Movie.js';
 
-function App() {
-  return (
-    <div className="App">
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-    </div>
-  );
+class App extends Component{ // Component -> render -> return(JSX)
+  render(){  
+    return( 
+      <div className="App">
+        <Movie /> {/* call Movie Component */}
+        <Movie />
+        <Movie />
+        <Movie />
+      </div>
+    )
+  }
 }
+export default App; 
 
-export default App;
 ```
 
 -Movie.js
@@ -206,29 +214,31 @@ App이 모든 데이터를 가지고 있는 거다.
 ex1.
 ```javascript
 -App.js
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Movie from './Movie.js';
 
-const movies=[
+const movies = [ //const로 변수를 선언할 경우 해당 스코프 내에서만 존재하며 한번 선언 후 값의 변경이 불가능
   "HarryPoter",
   "Bugs",
   "ToyStory",
   "AboutTime"
 ]
 
-function App() {
-  return (
-    <div className="App">
-      <Movie title={movies[0]}/>
-      <Movie title={movies[1]}/>
-      <Movie title={movies[2]}/>
-      <Movie title={movies[3]}/>
-    </div>
-  );
+class App extends Component{ // Component -> render -> return(JSX)
+  render(){  
+    return( 
+      <div className="App">
+        <Movie title={movies[0]}/> {/* call Movie Component */}
+        <Movie title={movies[1]}/>
+        <Movie title={movies[2]}/>
+        <Movie title={movies[3]}/>
+      </div>
+    )
+  }
 }
+export default App; 
 
-export default App;
 ```
 
 -Movie.js
@@ -293,18 +303,20 @@ const movieImages=[
 
 ]
 
-function App() {
-  return (
-    <div className="App">
-      <Movie title={movieTitles[0]} poster={movieImages[0]}/>
-      <Movie title={movieTitles[1]} poster={movieImages[1]}/>
-      <Movie title={movieTitles[2]} poster={movieImages[2]}/>
-      <Movie title={movieTitles[3]} poster={movieImages[3]}/>
-    </div>
-  );
+class App extends Component{ // Component -> render -> return(JSX)
+  render(){  
+    return( 
+      <div className="App">
+        <Movie title={movieTitles[0]} poster={movieImages[0]} />
+        <Movie title={movieTitles[1]} poster={movieImages[1]} />
+        <Movie title={movieTitles[2]} poster={movieImages[2]} />
+        <Movie title={movieTitles[3]} poster={movieImages[3]} />
+      </div>
+    )
+  }
 }
+export default App; 
 
-export default App;
 ```
 
 -Movie.js
@@ -369,17 +381,19 @@ const movies = [
   }
 ]
 
-function App() {
-  return (
-    <div className="App">
-      {movies.map(movie=>{
-        return <Movie title={movie.title} poster={movie.poster} />
-      })}
-    </div>
-  );
+class App extends Component{ // Component -> render -> return(JSX)
+  render(){  
+    return( 
+      <div className="App">
+        {movies.map(movie=>{ //기존 배열을 callbackfunction에 의해 새 배열로 mapping
+          return <Movie title={movie.title} poster={movie.poster} />
+        })}
+      </div>
+    )
+  }
 }
+export default App; 
 
-export default App;
 ```
 
 -------------------------------------------------------------------
@@ -389,17 +403,18 @@ export default App;
 
 -App.js
 ```javascript
-function App() {
-  return (
-    <div className="App">
-      {movies.map((movie, index)=>{
-        return <Movie title={movie.title} poster={movie.poster} key={index}/> //key값 부여, key가 없다면 console창에 에러발생
-      })}
-    </div>
-  );
+class App extends Component{ // Component -> render -> return(JSX)
+  render(){  
+    return( 
+      <div className="App">
+        {movies.map((movie, index)=>{ //기존 배열을 callbackfunction에 의해 새 배열로 mapping
+          return <Movie title={movie.title} poster={movie.poster} key={index}/>
+        })}
+      </div>
+    )
+  }
 }
 
-export default App;
 ```
 
 2. statis propTypes를 이용해 부모 컴포넌트에게서 받는 정보를 체크한다. <br>
