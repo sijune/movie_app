@@ -121,7 +121,6 @@ export default Movie //app.js로 해당 컴포넌트를 내보낸다.
 -App.js
 ```javascript
 import React, {Component} from 'react';
-import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Movie from './Movie.js';
